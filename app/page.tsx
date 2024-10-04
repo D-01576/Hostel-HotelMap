@@ -13,7 +13,7 @@ export default function Home() {
           <p className="text-[23px] font-sans font-bold text-blue-200">Forget the old rules. You can book Hostels / Hotels Online Here.</p>
           <div className="mt-[80px] bg-slate-800 w-[350px]">
             <button className="bg-slate-600 p-[8px] rounded-[0px] font-bold w-[150px] text-[15px]">Explore</button>
-            <span className="text-slate-400 ml-[20px]">>> Hostels / Hotels</span>
+            <span className="text-slate-400 ml-[20px]">&gt;&gt; Hostels / Hotels</span>
           </div>
         </div>
       </div>
