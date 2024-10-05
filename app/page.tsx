@@ -17,12 +17,20 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="pl-[150px] bg-white roundedl">
-        <div>
-          <h2 className="text-slate-300 font-bold">Trusted By:</h2>
-          <div className="flex bg-white w-[500px] h-[100px] justify-between items-center p-[20px]">
+      <div className="bg-slate-900">
+        <div className="bg-slate-300 pl-[150px] rounded-tl-[100px] rounded-tr-[100px]">
+          <h2 className="text-slate-900 font-bold pt-[50px]">Trusted By:</h2>
+          <div className="flex w-[500px] h-[100px] justify-between items-center p-[20px]">
             <Image src={trust1} alt="Trust 1" width={200} height={100}  className="h-[30px]"/>
             <Image src={trust2} alt="Trust 2" width={100} height={100} className="h-[30px]"/>
+          </div>
+        </div>
+        <div>
+          <div>
+            <h2>do not be feared, Beleive on us</h2>
+            <div>
+              
+            </div>
           </div>
         </div>
       </div>
