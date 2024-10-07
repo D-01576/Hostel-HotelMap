@@ -17,11 +17,47 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
+  /* color: rgb(var(--foreground-rgb)); */
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+/* BottomLeftMessage.css */
+.bottom-left-message {
+  position: fixed;
+  bottom: 20px;
+  right: -300px; /* Start off-screen */
+  padding: 10px 20px;
+  background-color: #eaf7ea;
+  border-radius: 8px;
+  color: #004d00;
+  font-size: 16px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  animation: slide-in 1.5s forwards, slide-out 0.5s 1.5s forwards;
+}
+
+@keyframes slide-in {
+  from {
+    right: -300px; /* Off-screen to the left */
+  }
+  to {
+    right: 20px; /* Position at the bottom left */
+  }
+}
+
+@keyframes slide-out {
+  from {
+    left: 20px;
+  }
+  to {
+    left: -300px; /* Slide out to the left */
   }
 }
