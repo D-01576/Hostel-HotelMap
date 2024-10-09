@@ -24,7 +24,7 @@ export default function SignU() {
     if (isSubmitting) return; 
     setIsSubmitting(true); 
 
-    axios.post('/api/admin', { email: email, password: pass })
+    axios.post('/api/admin', { email: email, password: pass, type : "email"})
       .then((response) => {
         if (response.data.message === 'success') {
           setMessage(response.data.message ); 
@@ -45,17 +45,39 @@ export default function SignU() {
       });
   };
 
+    const handlegoogle = ()=>{
+      axios.post('/api/admin', {type : "google"})
+        .then((response) => {
+          if (response.data.message === 'success') {
+            setMessage(response.data.message ); 
+          } else {
+            setMessage(response.data.message ); 
+            seterr(false)
+          }
+          setShowMessage(true);
+        })
+        .catch((error) => {
+          console.error('There was an error with the request:', error);
+          setMessage(error.message);
+          seterr(false) 
+          setShowMessage(true); 
+        })
+        .finally(() => {
+          setIsSubmitting(false);
+        });
+    };
+
   const handleCloseMessage = () => {
     setShowMessage(false); 
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-blue-500">
-      <div className="bg-white p-8 rounded-lg shadow-md w-96">
+    <div className="flex items-center justify-center min-h-screen bg-bgc">
+      <div className="bg-box p-8 rounded-lg shadow-md w-96">
         <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
         <div>
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700" htmlFor="email">
+            <label className="block text-sm font-medium text-tc" htmlFor="email">
               Email
             </label>
             <input
@@ -69,7 +91,7 @@ export default function SignU() {
             />
           </div>
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700" htmlFor="password">
+            <label className="block text-sm font-medium text-tc" htmlFor="password">
               Password
             </label>
             <input
@@ -81,19 +103,19 @@ export default function SignU() {
               onChange={handlepass}
               value={pass}
             />
-            <a href="#" className="text-sm text-blue-600 hover:underline mt-2 block">
+            <a href="#" className="text-sm text-toc hover:underline mt-2 block">
               Forgot password?
             </a>
           </div>
           <button
             type="submit"
-            className={`w-full bg-blue-600 text-white font-bold py-2 rounded-md hover:bg-blue-700 transition duration-200 ${
+            className={`w-full bg-bgbc text-white font-bold py-2 rounded-md hover:bg-gray-700 transition duration-200 ${
               isSubmitting ? "opacity-50 cursor-not-allowed" : ""
             }`}
             onClick={submitit}
             disabled={isSubmitting}
           >
-            {isSubmitting ? "Logging in..." : "Login"}
+            {isSubmitting ? "Loading..." : "Login"}
           </button>
           <div className="flex items-center justify-between mt-4">
             <span className="border-b w-1/5 border-gray-300"></span>
@@ -101,13 +123,13 @@ export default function SignU() {
             <span className="border-b w-1/5 border-gray-300"></span>
           </div>
           <div className="flex justify-around mt-4">
-            <button className="flex items-center bg-gray-100 text-gray-800 px-4 py-2 rounded-md w-full justify-center">
+            <button className="flex items-center bg-gray-300 text-gray-900 px-4 py-2 rounded-md w-full justify-center" onClick={handlegoogle}>
               <span className="mr-2">Login with Google</span>
             </button>
           </div>
           <p className="mt-4 text-sm text-center text-black w-full flex justify-center">
             Dont have an account?
-            <a href="#" className="text-blue-600 hover:underline">
+            <a href="#" className="text-toc hover:underline">
               Sign up
             </a>
           </p>

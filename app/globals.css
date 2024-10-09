@@ -23,14 +23,15 @@ body {
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+    background: rgba(255, 255, 255, 0.155);
   }
 }
 
-/* BottomLeftMessage.css */
-.bottom-left-message {
+/* BottomRightMessage.css */
+.bottom-right-message {
   position: fixed;
   bottom: 20px;
-  right: -300px; /* Start off-screen */
+  right: -300px; /* Start off-screen from the right */
   padding: 10px 20px;
   background-color: #eaf7ea;
   border-radius: 8px;
@@ -41,23 +42,24 @@ body {
   align-items: center;
   justify-content: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  animation: slide-in 1.5s forwards, slide-out 0.5s 1.5s forwards;
+  animation: slide-in-right 1.5s forwards, slide-out-right 3.5s forwards;
+  /* Note: 3.5s delay on slide-out to ensure it's visible for some time */
 }
 
-@keyframes slide-in {
+@keyframes slide-in-right {
   from {
-    right: -300px; /* Off-screen to the left */
+    right: -300px; /* Start off-screen to the right */
   }
   to {
-    right: 20px; /* Position at the bottom left */
+    right: 20px; /* Position at the bottom right */
   }
 }
 
-@keyframes slide-out {
+@keyframes slide-out-right {
   from {
-    left: 20px;
+    right: 20px; /* Start from visible position */
   }
   to {
-    left: -300px; /* Slide out to the left */
+    right: -300px; /* Slide out to the right */
   }
 }
