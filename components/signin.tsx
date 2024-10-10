@@ -7,7 +7,7 @@ import { auth, provider } from '@/firebase';
 import { signInWithPopup } from "firebase/auth";
 import Link from "next/link";
 
-export default function SignU() {
+export default function SignI() {
   const [email, setEmail] = useState<string>("");
   const [pass, setPass] = useState<string>("");
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
@@ -27,7 +27,7 @@ export default function SignU() {
     if (isSubmitting) return; 
     setIsSubmitting(true); 
 
-    axios.post('/api/admin/signup', { email: email, password: pass})
+    axios.post('/api/admin/signin', { email: email, password: pass})
       .then((response) => {
         if (response.data.message === 'Success') { 
           setMessage(response.data.message ); 
@@ -71,7 +71,7 @@ export default function SignU() {
   return (
     <div className="flex items-center justify-center min-h-screen bg-bgc">
       <div className="bg-box p-8 rounded-lg shadow-md w-96">
-        <h2 className="text-2xl font-bold mb-6 text-center">Sign Up</h2>
+        <h2 className="text-2xl font-bold mb-6 text-center">Sign In</h2>
         <div>
           <div className="mb-4">
             <label className="block text-sm font-medium text-tc" htmlFor="email">
@@ -101,6 +101,9 @@ export default function SignU() {
               value={pass}
             />
           </div>
+          <a href="#" className="text-sm text-toc hover:underline mt-2 block">
+              Forgot password?
+            </a>
           <button
             type="submit"
             className={`w-full bg-bgbc text-white font-bold py-2 rounded-md hover:bg-gray-700 transition duration-200 ${
@@ -109,8 +112,9 @@ export default function SignU() {
             onClick={submitit}
             disabled={isSubmitting}
           >
-            {isSubmitting ? "Loading..." : "Sign Up"}
+            {isSubmitting ? "Loading..." : "Sign In"}
           </button>
+          
           <div className="flex items-center justify-between mt-4">
             <span className="border-b w-1/5 border-gray-300"></span>
             <span className="text-gray-500">Or</span>
@@ -122,9 +126,9 @@ export default function SignU() {
             </button>
           </div>
           <p className="mt-4 text-sm text-center text-black w-full flex justify-center">
-            Already have account?
-            <Link href="/admin/signin" className="text-toc hover:underline">
-              Sign In
+            Do not have an account?
+            <Link href="/admin/signup" className="text-toc hover:underline">
+              Sign Up
             </Link>
           </p>
         </div>

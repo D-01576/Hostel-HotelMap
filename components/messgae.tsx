@@ -17,7 +17,7 @@ const Message: React.FC<MessageProps> = ({ message, onClose, error }) => {
 
   return (
     <div 
-      className={`fixed bottom-4 left-4 ${error ? 'bg-red-100 border-red-400 text-red-700' : 'bg-green-100 border-green-400 text-green-700'} px-4 py-2 rounded-md shadow-md transition-opacity duration-300`}
+      className={`fixed bottom-4 left-4 ${error ? 'bg-green-100 border-green-400 text-green-700' : 'bg-green-100 border-green-400 text-green-700'} px-4 py-2 rounded-md shadow-md transition-opacity duration-300`}
     >
       {message}
     </div>
